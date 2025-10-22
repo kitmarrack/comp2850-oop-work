@@ -51,5 +51,10 @@ evaluateGuess(guess: String, target: String): List<Int> {
 
 
 displayGuess(guess: String, matches: List<Int>) {
-
+    val green = "\u001b[32m"
+    val orange = "\u001b[38;5;208m"
+    val reset = "\u001b[0m"
+    for (i in 0,4) {
+        
+    }
 }
