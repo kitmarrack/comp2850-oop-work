@@ -14,24 +14,21 @@ class AnagramTest: StringSpec({
     //}
 
     "Not an anagram for two strings that are different lengths" {
-        silent anagramOf ssilent shoudBe false
-        silent anagramOf naskcil shouldBe false
+        withClue("silent should not be anagramOf ssilent"){"ssilent" anagramOf "silent" shouldBe false}
     }
 
     "Not an anagram for when one string is empty" {
-        "" anagramOf silent shouldBe false
-        silent anagramOf "" shouldBe false
-
+        withClue("  should not be anagramOf silent"){"silent" anagramOf "" shouldBe false}
+        withClue("silent should not be anagramOf  "){"" anagramOf "silent" shouldBe false}
     }
 
     "Is an anagram when two strings are non-empty and the exact same" {
-        "" anagramOf "" shouldBe false
-        silent anagramOf silent shouldBe true 
-
+        
+        withClue("  should not be anagramOf  "){"" anagramOf "" shouldBe false}
     }
 
     "Is an anagram when two strings are non-empty and have the same characters in different order" {
-        silent anagramOf listen shouldBe true
+        withClue("silent should be anagramOf listen"){"listen" anagramOf "silent" shouldBe true}
     }
 
     //Note case isnt sensitive when comparing characters
