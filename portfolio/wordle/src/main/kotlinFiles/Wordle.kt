@@ -1,26 +1,28 @@
 // Implement the six required functions here
+package kotlinFiles
+
 import java.io.File
 
-isValid(word: String): Boolean {
+fun isValid(word: String): Boolean {
 }
 
-readWordList(filename: String): MutableList<String> {
+fun readWordList(filename: String): MutableList<String> {
     val wordsFile = "data/words.txt" //opens the text file with words stored
     val wordArray: Array<String> = File(wordsFile).readlines().toTypedArray() //reads the lines and stores all the words in an array
 }
 
-pickRandomWord(words: MutableList<String>): String {
+fun pickRandomWord(words: MutableList<String>): String {
     val randomWord = wordArray.random()
     return randomWord
 }
 
-obtainGuess(attempt: Int): String {
+fun obtainGuess(attempt: Int): String {
     println("Enter your guess ")
     var guess = readLine()
     return guess
 }
 
-evaluateGuess(guess: String, target: String): List<Int> {
+fun evaluateGuess(guess: String, target: String): List<Int> {
     var guess = guess.toTypedArray()
     var randomWord = randomWord.toTypedArray()
     var check = arrayOf('0','0,'0','0','0')
@@ -44,17 +46,17 @@ evaluateGuess(guess: String, target: String): List<Int> {
 
 }
         
-        
-    
-
-
-
-
-displayGuess(guess: String, matches: List<Int>) {
+fun displayGuess(guess: String, matches: List<Int>) {
     val green = "\u001b[32m"
     val orange = "\u001b[38;5;208m"
     val reset = "\u001b[0m"
     for (i in 0,4) {
-        
+        if check[i] == 0 {
+            println(guess[i])
+        } else if check[i] == 1 {
+            println(orange + guess[i] + reset)
+        } else {
+            println(green + guess[i] + reset)
+        }
     }
 }
