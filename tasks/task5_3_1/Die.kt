@@ -12,20 +12,22 @@ fun rollDie(sides: Int = 6) {
     }
 }
 
-fun readInt(prompt: String): Int {
-    print(prompt)
-    var sides = readln().toInt()
+fun readInt(sides: String): Int {
+    var sides = sides.toInt()
     return sides
 }
 
 fun main () {
-    val prompt = ("Enter dice side number or leave blank for 6: ")
-    if (prompt.isNullOrBlank()) {
+    println("Enter dice side number: ")
+    var sides = readln()
+    if (sides.isEmpty()) {
         rollDie()
     } else {
-        rollDie(readInt(prompt))
+        rollDie(readInt(sides))
     }
-    
 }
+
+
+
 
 
