@@ -1,25 +1,27 @@
+package wordle
+
 // Implement the six required functions here
 import java.io.File
 
 fun isValid(word: String): Boolean {
-    if (word.length == 5) {
+    if (word.length == 5) { //ensures the length of guess is 5 characters
         return true
     } else {
         return false
     }
 }
 
-fun readWordList(filename: String): MutableList<String> {
+fun readWordList(filename: String): MutableList<String> { //stores the values in 'words.txt' into a mutable list and returns them
     val words: MutableList<String> = File(filename).readLines().toMutableList()
     return words
 }
 
-fun pickRandomWord(words: MutableList<String>): String {
+fun pickRandomWord(words: MutableList<String>): String { //picks a random target word from the array and returns it
     val randomWord = words.random()
     return randomWord
 }
 
-fun obtainGuess(attempt: Int): String {
+fun obtainGuess(attempt: Int): String { //prompts the user to enter a guess and continues to ask until the guess is valid
     var guess: String
     do {
         print("\nAttempt $attempt: ")

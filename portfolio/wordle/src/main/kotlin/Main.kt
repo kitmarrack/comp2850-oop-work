@@ -1,4 +1,4 @@
-
+package wordle
 fun main() {
     val words = readWordList("data/words.txt")
     val target = pickRandomWord(words)
