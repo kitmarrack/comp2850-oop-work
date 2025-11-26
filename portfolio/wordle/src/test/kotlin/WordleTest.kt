@@ -20,7 +20,7 @@ class WordleTest : StringSpec({
         withClue("hello should be isValid") {isValid("hello") shouldBe true}
     }
     //readWordList
-    "
+    
     //pickRandomWord
 
     //evaluateGuess

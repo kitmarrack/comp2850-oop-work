@@ -2,9 +2,9 @@ package wordle
 fun main() {
     val words = readWordList("data/words.txt")
     val target = pickRandomWord(words)
-    println(target)
+    //println(target)
     var attempt = 0
-    while (attempt <= 10) {
+    while (attempt <= 6) {
         val guess = obtainGuess(attempt)
         val check = evaluateGuess(guess, target)
         displayGuess(guess, check)
@@ -14,5 +14,6 @@ fun main() {
             break
         }        
     }
+    println("\nThe word was $target")
 
 }
