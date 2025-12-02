@@ -4,7 +4,12 @@ package wordle
 import java.io.File
 
 fun isValid(word: String): Boolean {
-    if (word.length == 5) { //ensures the length of guess is 5 characters
+    if (word.length == 5) {
+        for (i in 0..4) {
+            if (word[i].isLetter() == false) {
+                return false
+            }
+        } //ensures the length of guess is 5 characters
         return true
     } else {
         return false
@@ -26,7 +31,11 @@ fun obtainGuess(attempt: Int): String { //prompts the user to enter a guess and 
     do {
         print("\nAttempt $attempt: ")
         guess = readln().uppercase()
-    } while (isValid(guess) == false)
+        if (isValid(guess)) {
+            break
+        }
+        println("Invalid Guess, Try Again")
+    } while (true)
     return guess
 }
 
