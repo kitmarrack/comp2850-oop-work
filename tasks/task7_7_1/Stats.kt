@@ -11,7 +11,6 @@ fun readData() = buildList<Float> {
         }
     }
 }
-
 fun median(dataList: List<Float>): Float {
     val sortedData = dataList.sorted()
     val listSize = dataList.size
@@ -24,7 +23,6 @@ fun median(dataList: List<Float>): Float {
         return medianValue
     }
 }
-
 //minimum, maximum, mean, median
 fun displayValues(dataList: List<Float>) {
     val sortedData = dataList.sorted()
@@ -37,11 +35,6 @@ fun displayValues(dataList: List<Float>) {
     println("Mean value is $meanValue")
     println("Median value is $medianValue")
 }
-
-
-
-
 fun main() {
     val dataList = readData()
     displayValues(dataList)
-}
