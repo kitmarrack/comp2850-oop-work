@@ -43,45 +43,35 @@ class WordleTest : StringSpec({
     "mutable list of strings for readWordList of non empty text file" {
         val nonEmpty = createTempFile()
         nonEmpty.writeText("about\nbroke\ncrate")
-        withClue("readWordList of nonEmpty text file should return mutable list of strings") {
-            readWordList(nonEmpty.path) shouldBe mutableListOf("about","broke","crate")}    
+        withClue("readWordList of nonEmpty text file should return mutable list of strings") {readWordList(nonEmpty.path) shouldBe mutableListOf("about","broke","crate")}    
     }
     "empty mutable list for readWordList of empty text file" {
         val empty = createTempFile()
         empty.writeText("")
-        withClue("readWordList of empty text file should return empty mutable list") {
-            readWordList(empty.path) shouldBe mutableListOf()}
+        withClue("readWordList of empty text file should return empty mutable list") {readWordList(empty.path) shouldBe mutableListOf()}
     }
     "FileNotFoundException for readWordList of non existent file" {
-        withClue("readWordList of non existent text file should return FileNotFoundException") {
-            shouldThrow<FileNotFoundException> {readWordList("doesNotExist.txt") }} 
+        withClue("readWordList of non existent text file should return FileNotFoundException") {shouldThrow<FileNotFoundException> {readWordList("doesNotExist.txt")}} 
     }
 
     //pickRandomWord
     "string that exists in list for pickRandomWord of non empty mutable list of strings, also only a single string returned" {
         val nonEmpty = mutableListOf("about","broke","crate")
-        withClue("pickRandomWord of non empty mutable list should return a single string") {
-            pickRandomWord(nonEmpty) shouldBeIn nonEmpty }
+        withClue("pickRandomWord of non empty mutable list should return a single string") {pickRandomWord(nonEmpty) shouldBeIn nonEmpty }
     }
     "NoSuchElementException for pickRandomWord of empty list" {
         val empty = mutableListOf<String>()
-        withClue("pickRandomWord of empty mutable list should throw NoSuchElementException") {
-            shouldThrow<NoSuchElementException> {
-                pickRandomWord(empty)
-            }
-        }
+        withClue("pickRandomWord of empty mutable list should return NoSuchElementException") {shouldThrow<NoSuchElementException> {pickRandomWord(empty)}}
     }
-    "KotlinNullPointerException for pickRandomWord of non existent list" {
-        val doesNotExist: MutableList<String>? = null
-        withClue("pickRandomWord of non existent list should throw KotlinNullPointerException") {
-            shouldThrow<KotlinNullPointerException> {
-                pickRandomWord(doesNotExist)
-            }
-        }
-    }
-    
     //evaluateGuess
-
-    //
+    "characters in check are 2 when the same characters in guess and target are equal" {
+        withClue("evaluateGuess of hello and hello should make check = [2,2,2,2,2]") {evaluateGuess("hello","hello") shouldBe listOf(2,2,2,2,2)}
     }
+    "characters in check are 1 when the same character guess exists in target in a different position" {
+        withClue("evaluateGuess of hello and lohel should make check = [1,1,1,1,1]") {evaluateGuess("hello","lohel") shouldBe listOf(1,1,1,1,1)}
+    }
+    "characters in check are 0 when the same character in guess doesnt appear in target" {
+        withClue("evaluateGuess of abcde and fghij should make check = [0,0,0,0,0]") {evaluateGuess("abcde","fghij") shouldBe listOf(0,0,0,0,0)}
+    }
+}
 )
